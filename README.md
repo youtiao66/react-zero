@@ -14,4 +14,5 @@
 
 - `webpack-dev-server` 快速搭建本地开发服务
 - `path alias` 配置路径别名
+- `html-webpack-plugin` 简化 html 文件创建
 - `react-router-dom` 新增路由

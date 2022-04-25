@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const mode = process.env.REACT_APP_ENV === 'prod' ? 'production' : 'development'
 
@@ -10,7 +11,7 @@ module.exports = {
   mode,
   output: {
     path: resolve('dist'),
-    filename: 'main.js'
+    filename: '[name].[contenthash].bundle.js'
   },
   entry: resolve('src/index.tsx'),
   resolve: {
@@ -27,6 +28,7 @@ module.exports = {
       { test: /\.tsx?$/, loader: "ts-loader" }
     ]
   },
+  plugins: [new HtmlWebpackPlugin()],
   devServer: {
     static: {
       directory: resolve('public'),
