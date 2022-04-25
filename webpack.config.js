@@ -32,7 +32,14 @@ module.exports = {
         use: [
           // compiles Less to CSS
           "style-loader",
-          "css-loader",
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[path][name]__[local]--[hash:base64:5]"
+              }
+            }
+          },
           "less-loader",
         ],
       }
