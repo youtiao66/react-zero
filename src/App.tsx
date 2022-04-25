@@ -1,5 +1,14 @@
-import * as ReactDOM from 'react-dom'
+import { Routes, Route } from "react-router-dom"
+import Home from '@/pages/home'
+import About from '@/pages/about'
 
-const App = <h1>Hello World</h1>
-
-ReactDOM.render(App, document.getElementById('root'))
+export default function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+      </Routes>
+    </div>
+  );
+}
