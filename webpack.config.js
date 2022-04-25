@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const mode = process.env.REACT_APP_ENV === 'prod' ? 'production' : 'development'
+const isDev = mode === 'development'
 
 const resolve = url => {
   return path.resolve(__dirname, url)
@@ -29,6 +30,7 @@ module.exports = {
     ]
   },
   plugins: [new HtmlWebpackPlugin()],
+  devtool: isDev ? 'eval-source-map' : '',
   devServer: {
     static: {
       directory: resolve('public'),
