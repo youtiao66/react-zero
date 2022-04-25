@@ -26,7 +26,16 @@ module.exports = {
   module: {
     rules: [
       // https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
-      { test: /\.tsx?$/, loader: "babel-loader" }
+      { test: /\.tsx?$/, loader: "babel-loader" },
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Less to CSS
+          "style-loader",
+          "css-loader",
+          "less-loader",
+        ],
+      }
     ]
   },
   plugins: [new HtmlWebpackPlugin()],
