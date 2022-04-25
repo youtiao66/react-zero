@@ -1,14 +1,12 @@
-import { Routes, Route } from "react-router-dom"
-import Home from '@/pages/home'
-import About from '@/pages/about'
+import { useRoutes } from "react-router-dom"
+import routes from './routes'
 
 export default function App() {
+  const element = useRoutes(routes)
+
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-      </Routes>
+      {element}
     </div>
   );
 }
