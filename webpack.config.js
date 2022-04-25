@@ -24,8 +24,8 @@ module.exports = {
   },
   module: {
     rules: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { test: /\.tsx?$/, loader: "ts-loader" }
+      // https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
+      { test: /\.tsx?$/, loader: "babel-loader" }
     ]
   },
   plugins: [new HtmlWebpackPlugin()],
