@@ -1,11 +1,16 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 const mode = process.env.REACT_APP_ENV === 'prod' ? 'production' : 'development'
 const isDev = mode === 'development'
 
 const resolve = url => {
   return path.resolve(__dirname, url)
+}
+
+const assetsPath = url => {
+  return path.resolve(__dirname, 'assets', url)
 }
 
 module.exports = {
@@ -43,10 +48,53 @@ module.exports = {
           "postcss-loader",
           "less-loader",
         ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: assetsPath('img/[name].[hash:7].[ext]')
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: assetsPath('media/[name].[hash:7].[ext]')
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: assetsPath('fonts/[name].[hash:7].[ext]')
+            }
+          }
+        ]
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "public", to: "dist" }
+      ],
+    })
+  ],
   devtool: isDev ? 'eval-source-map' : '',
   devServer: {
     static: {

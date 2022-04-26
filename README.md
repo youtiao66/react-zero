@@ -57,12 +57,17 @@ module.exports = {
 
 
 
-## CSS
-样式
+## 样式和静态资源 
+样式和静态资源
 
-```
-yarn add --dev less less-loader css-loader style-loader
-```
+- `style-loader` 把样式插入 DOM 结构中
+- `css-loader` 解释 `@import` 和 `url()`
+- `postcss-loader + postcss + autoprefix` 样式处理和自动添加前缀
+- `less-loader + less` 编译 less
+- `url-loader` 把代码中依赖的文件转换为 URL
+- `copy-webpack-plugin` 处理静态资源
+- TODO: Code Splitting
+
 
 
 > [Create React App 2.0](https://reactjs.org/blog/2018/10/01/create-react-app-v2.html)
