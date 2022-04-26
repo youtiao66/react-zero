@@ -57,6 +57,21 @@ module.exports = {
 
 
 
+## 开发
+
+- `ESLint` JS 代码规范校验
+- `stylelint` 样式代码规范校验
+- `husky + lint-staged + prettier + eslint` 自动代码校验和格式化
+- 单步调试
+
+> [通过 husky + lint-staged 实现在 Git 提交前进行文件美化和代码校验](https://youtiao66.github.io/blog/husky-lint-staged-prettier-eslint/)
+
+> [💪严格但是不严苛的编码规范](https://github.com/umijs/fabric)
+
+> [在 VS Code 中调试 Vue](https://youtiao66.github.io/blog/debug-vue-in-vscode/)
+
+
+
 ## 样式和静态资源 
 样式和静态资源
 
