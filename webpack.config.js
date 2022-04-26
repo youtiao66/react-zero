@@ -1,4 +1,7 @@
 const path = require('path')
+const fs = require('fs')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 
@@ -12,6 +15,22 @@ const resolve = url => {
 const assetsPath = url => {
   return path.resolve(__dirname, 'assets', url)
 }
+
+// Create the fallback path (the production .env)
+const basePath = resolve('./.env')
+// We're concatenating the environment name to our filename to specify the correct env file!
+const envPath = `${basePath}.${isDev ? 'dev' : 'prod'}`;
+// Set the path parameter in the dotenv config
+const fileEnv = dotenv.config({ path: envPath }).parsed;
+const baseEnv = dotenv.config({ path: basePath }).parsed;
+const allEnv = { ...baseEnv, ...fileEnv }
+// reduce it to a nice object, the same as before (but with the variables from the file)
+const envKeys = Object.keys(allEnv).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(allEnv[next]);
+  return prev;
+}, {});
+
+console.log(JSON.stringify(envKeys))
 
 module.exports = {
   mode,
@@ -93,7 +112,8 @@ module.exports = {
       patterns: [
         { from: "public", to: "dist" }
       ],
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ],
   devtool: isDev ? 'eval-source-map' : '',
   devServer: {

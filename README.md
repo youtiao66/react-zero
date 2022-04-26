@@ -47,16 +47,6 @@ module.exports = {
 
 
 
-## `react-router-dom`
-新增路由
-
-- `webpack-dev-server` 快速搭建本地开发服务
-- `path alias` 配置路径别名
-- `html-webpack-plugin` 简化 html 文件创建
-- `react-router-dom` 新增路由
-
-
-
 ## 开发
 
 - `ESLint` JS 代码规范校验
@@ -82,6 +72,17 @@ module.exports = {
 - `url-loader` 把代码中依赖的文件转换为 URL
 - `copy-webpack-plugin` 处理静态资源
 - TODO: Code Splitting
+
+
+
+## 构建应用
+
+### `react-router-dom` 路由
+### `dotenv` 环境变量
+
+- `webpack-dev-server` 快速搭建本地开发服务
+- `path alias` 配置路径别名
+- `html-webpack-plugin` 简化 html 文件创建
 
 
 
